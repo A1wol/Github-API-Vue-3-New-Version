@@ -1,0 +1,17 @@
+button {
+    color: #1a1a1a;
+    font-size: 16px;
+    border-radius: 6px;
+    border: solid 1px #1a1a1a;
+    cursor: pointer;
+    background: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 50px;
+}
+
+button:hover {
+    background: #f6f6f6;
+}
