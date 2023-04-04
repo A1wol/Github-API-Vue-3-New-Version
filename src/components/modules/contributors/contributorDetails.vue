@@ -93,7 +93,7 @@ type TContributorList = Contributor[]
 
 async function getCurrentUser() {
     try {
-        const response = await Axios.get<TContributorList>(`https://api.github.co m/user/${route.params.id}`)
+        const response = await Axios.get<TContributorList>(`https://api.github.com/user/${route.params.id}`)
         currentUser.value = response.data
     } catch (error) {
         console.error(error)
