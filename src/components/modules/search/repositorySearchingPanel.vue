@@ -115,7 +115,7 @@ function decrementPageValue() {
     }
 }
 function incrementPageValue() {
-    if (!props.isDataTableLoading && props.repositoryItems?.length !== 0) {
+    if (props.repositoryItems?.length !== 0) {
         selectedPageOption.value++
         form.value.requestSubmit()
     }
