@@ -104,12 +104,12 @@ function checkForm(e: Event) {
     e.preventDefault();
 }
 function submitForm() {
-    if (selectedPageOption.value >= 1 && !props.isDataTableLoading && props.repositoryItems?.length !== 0) {
+    if (selectedPageOption.value >= 1) {
         form.value.requestSubmit()
     }
 }
 function decrementPageValue() {
-    if (selectedPageOption.value > 1 && !props.isDataTableLoading && props.repositoryItems?.length !== 0) {
+    if (selectedPageOption.value > 1) {
         selectedPageOption.value--
         form.value.requestSubmit()
     }
