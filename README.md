@@ -1,4 +1,6 @@
-# default
+# Github API Vue3
+
+Github API app without using Vuetify. Loading spinner, Vue3 validation, responsiveness etc. added.
 
 ## Project setup
 
