@@ -22,16 +22,15 @@
 </template>
 
 <script setup lang="ts">
-import Axios from 'axios'
 import { ref, onMounted } from 'vue'
-import BackButton from '@/components/ui/BackButton.vue'
+import BackButton from '@/components/ui/backButton.vue'
 import { mdiEmoticonSadOutline } from '@mdi/js'
 import { useRoute } from 'vue-router';
 import SvgIcon from '@jamescoyle/vue-icon'
-import RepositoryCommitList from './RepositoryCommitList.vue';
-import RepositoryTeamMembers from './RepositoryTeamMembers.vue'
-import { TRepositoryArray } from '@/helpers/types';
+import RepositoryCommitList from './repositoryCommitList.vue';
+import RepositoryTeamMembers from './repositoryTeamMembers.vue'
 import Modal from '@/components/partials/Modal.vue'
+import { getCurrentRepositoryDetailsResponse } from '@/helpers/requests';
 
 const route = useRoute()
 const currentRepository = ref()
@@ -39,7 +38,8 @@ const isModalVisible = ref<boolean>(false)
 
 async function getCurrentRepositoryDetails() {
     try {
-        currentRepository.value = await (await Axios.get<TRepositoryArray>(`https://api.github.com/repositories/${route.params.id}`)).data
+        const response = await getCurrentRepositoryDetailsResponse(route.params.id.toString())
+        currentRepository.value = response.data
     } catch (error) {
         console.error(error)
         isModalVisible.value = true

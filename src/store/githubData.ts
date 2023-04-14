@@ -1,18 +1,15 @@
+import { GithubData } from '@/helpers/interfaces'
 import { defineStore } from 'pinia'
-
 export const useGithubDataStore = defineStore('githubData', {
-  state: () => ({
+  state: (): GithubData => ({
     name: '',
     page: 1,
     perPage: 5,
     order: 'asc',
     sort: 'fork'
   }),
-  getters: {
-    getSearchingData: (state) => { return state.searchingData }
-  },
   actions: {
-    setSearchingData(newName, newPage, newPerPage, newOrder, newSort) {
+    setSearchingData(newName: string, newPage: number, newPerPage: number, newOrder: string, newSort: string) {
       this.name = newName,
         this.page = newPage,
         this.perPage = newPerPage,

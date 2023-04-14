@@ -1,7 +1,7 @@
-export interface Repository {
+export interface GithubData {
     name: String,
-    owner: Object,
-    created_at: Date,
-    description: String,
-    total_count: Number
+    page: Number,
+    perPage: Number,
+    order: String,
+    sort: String
 }

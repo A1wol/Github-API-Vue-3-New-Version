@@ -56,6 +56,7 @@ import { storeToRefs } from 'pinia';
 import { useGithubDataStore } from '@/store/githubData'
 import PanelSelect from '@/components/ui/PanelSelect.vue';
 import { validateFormFields } from '@/helpers/helper';
+import { TPerPageOption } from '@/helpers/types';
 
 const searchedRepositoryName = ref<string>('')
 const selectedPerPageOption = ref<number>(0)
@@ -63,14 +64,14 @@ const selectedPageOption = ref<number>(0)
 const selectedSortOption = ref<string>('')
 const selectedOrderOption = ref<string>('')
 const formErrors = ref([])
-const { name, page, perPage, order, sort } = storeToRefs(useGithubDataStore())
-const perPageOptions = ref([
-    { text: '5', value: 5 },
-    { text: '10', value: 10 },
-    { text: '25', value: 25 },
-    { text: '30', value: 30 },
-    { text: '50', value: 50 },
-    { text: '100', value: 100 },
+const { name, page, sort, perPage, order } = storeToRefs(useGithubDataStore())
+const perPageOptions = ref<TPerPageOption[]>([
+    { text: '5', value: '5' },
+    { text: '10', value: '10' },
+    { text: '25', value: '25' },
+    { text: '30', value: '30' },
+    { text: '50', value: '50' },
+    { text: '100', value: '100' },
 ])
 const orderOptions = ref([{ text: 'Descending', value: 'desc' }, { text: 'Ascending', value: 'asc' }])
 const sortOptions = ref([{ text: 'stars', value: 'stars' }, { text: 'fork', value: 'fork' }, { text: 'updated', value: 'updated' }])
@@ -122,11 +123,11 @@ function incrementPageValue() {
 }
 
 onMounted(() => {
-    searchedRepositoryName.value = name.value
-    selectedPageOption.value = page.value
-    selectedPerPageOption.value = perPage.value
-    selectedOrderOption.value = order.value
-    selectedSortOption.value = sort.value
+    searchedRepositoryName.value = name.value.toString()
+    selectedPageOption.value = page.value.valueOf()
+    selectedPerPageOption.value = perPage.value.valueOf()
+    selectedOrderOption.value = order.value.toString()
+    selectedSortOption.value = sort.value.toString()
     form.value.requestSubmit()
 })
 </script>

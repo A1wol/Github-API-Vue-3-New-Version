@@ -11,10 +11,12 @@
     </div>
 </template>
 <script setup lang="ts">
+import { TPerPageOption } from '@/helpers/types';
+
 defineProps({
     title: String,
     modelValue: [Number, String],
-    options: Array
+    options: Array<TPerPageOption>
 })
 defineEmits(['update:modelValue', 'onSearchRequest'])
 </script>

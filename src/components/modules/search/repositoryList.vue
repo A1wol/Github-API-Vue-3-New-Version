@@ -17,12 +17,11 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import Axios from 'axios'
 import { useGithubDataStore } from '@/store/githubData'
-import RepositorySearchingPanel from './RepositorySearchingPanel.vue'
-import RepositoryDataTable from './RepositoryDataTable.vue'
-import { TRepositoryArray } from '@/helpers/types'
+import RepositorySearchingPanel from './repositorySearchingPanel.vue'
+import RepositoryDataTable from './repositoryDataTable.vue'
 import Modal from '@/components/partials/Modal.vue'
+import { getGithubRepositoriesResponse } from '@/helpers/requests'
 
 const isDataTableVisible = ref<boolean>(false)
 const repositoryListLength = ref<number>(0)
@@ -43,7 +42,7 @@ async function getGithubRepositories() {
             sort: searchingPanelItems.value.sort
         }
         const searchParams = new URLSearchParams(paramsObj);
-        const response = await Axios.get<TRepositoryArray>(`https://api.github.com/search/repositories?${searchParams.toString()}`)
+        const response = await getGithubRepositoriesResponse(searchParams.toString())
         repositoryListLength.value = response.data.total_count;
         githubStore.setSearchingData(
             searchingPanelItems.value.name,
@@ -56,9 +55,7 @@ async function getGithubRepositories() {
         setTimeout(() => {
             isTableDataLoading.value = false
         }, 1000)
-        response.data.items.forEach((element: Object) => {
-            repositoryItems.value.push({ ...element, visible: false });
-        });
+        response.data.items.forEach((element: object) => repositoryItems.value.push({ ...element, visible: false }));
     } catch (error) {
         console.error(error)
         isModalVisible.value = true

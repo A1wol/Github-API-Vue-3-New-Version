@@ -56,16 +56,17 @@
 </template>
 
 <script setup lang="ts">
-import BackButton from '@/components/ui/BackButton.vue'
-import Axios from 'axios'
+import BackButton from '@/components/ui/backButton.vue'
 import { ref, onMounted } from 'vue'
 import { mdiAccount, mdiMapMarker, mdiAccountGroup, mdiTextBox } from '@mdi/js'
 import SvgIcon from '@jamescoyle/vue-icon'
 import { useRoute } from 'vue-router'
 import Modal from '@/components/partials/Modal.vue'
+import { getCurrentUserResponse } from '@/helpers/requests'
+import { TContributor } from '@/helpers/types'
 
 const route = useRoute()
-const currentUser = ref({
+const currentUser = ref<TContributor>({
     avatar_url: '',
     login: '',
     type: '',
@@ -78,22 +79,9 @@ const currentUser = ref({
 })
 const isModalVisible = ref<boolean>(false)
 
-type Contributor = {
-    avatar_url: String,
-    login: String,
-    type: String,
-    name: String,
-    followers: Number,
-    location: String,
-    created_at: Date,
-    updated_at: Date,
-    bio: String
-}
-type TContributorList = Contributor[]
-
 async function getCurrentUser() {
     try {
-        const response = await Axios.get<TContributorList>(`https://api.github.com/user/${route.params.id}`)
+        const response = await getCurrentUserResponse(route.params.id.toString())
         currentUser.value = response.data
     } catch (error) {
         console.error(error)

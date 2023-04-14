@@ -21,24 +21,17 @@
     </div>
 </template>
 <script setup lang="ts">
-import Axios from 'axios';
+import { getRepositoryContributorsResponse } from '@/helpers/requests';
 import { onMounted, ref } from 'vue';
 
 const repositoryContributors = ref()
 const props = defineProps(['currentRepository'])
 const emit = defineEmits(['errorEmit'])
 
-interface Contributor {
-    avatar_url: String,
-    id: Number,
-    login: String,
-    type: String
-}
-type TContributorList = Contributor[]
-
 async function getRepositoryContributors() {
     try {
-        repositoryContributors.value = await (await Axios.get<TContributorList>(`https://api.github.com/repos/${props.currentRepository.full_name}/contributors`)).data
+        const response = await getRepositoryContributorsResponse(props.currentRepository.full_name)
+        repositoryContributors.value = response.data
     } catch (error) {
         console.error(error)
         emit('errorEmit')
@@ -72,12 +65,6 @@ onMounted(() => {
     &__content {
         display: flex;
         flex-direction: column;
-    }
-
-    &__title {
-        display: flex;
-        justify-content: flex-end;
-        font-size: 24px;
     }
 
     li {

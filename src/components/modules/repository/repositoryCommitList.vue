@@ -25,29 +25,18 @@
     </div>
 </template>
 <script setup lang="ts">
-import Axios from 'axios';
+import { getRepositoryCommitsResponse } from '@/helpers/requests';
+import { TRepositoryCommitList } from '@/helpers/types';
 import { onMounted, ref } from 'vue';
 
-const repositoryCommits = ref()
+const repositoryCommits = ref<TRepositoryCommitList>()
 const props = defineProps(['currentRepository'])
 const emit = defineEmits(['errorEmit'])
-interface RepositoryCommit {
-    author: {
-        full_name: String,
-        login: String,
-        avatar_url: String
-    },
-    commit: {
-        message: String,
-        commiter: {
-            date: Date,
-        }
-    },
-}
-type TRepositoryCommitList = RepositoryCommit[]
+
 async function getRepositoryCommits() {
     try {
-        repositoryCommits.value = await (await Axios.get<TRepositoryCommitList>(`https://api.github.com/repos/${props.currentRepository.full_name}/commits`)).data
+        const response = await getRepositoryCommitsResponse(props.currentRepository.full_name)
+        repositoryCommits.value = response.data
     } catch (error) {
         console.error(error)
         emit('errorEmit')
@@ -70,12 +59,6 @@ onMounted(() => {
 
     &__commit {
         display: flex;
-    }
-
-    &__title {
-        display: flex;
-        justify-content: flex-end;
-        font-size: 24px;
     }
 
     &__avatar {
