@@ -22,7 +22,7 @@
                     <SvgIcon type="mdi" :path="mdiArrowUp"></SvgIcon>
                 </div>
             </div>
-            <Transition>
+            <Transition name="description">
                 <div v-if="item.visible" class="data-table__rows__description">
                     <div v-if="item.description !== null">
                         <div class="data-table__rows__description__title">Description</div>

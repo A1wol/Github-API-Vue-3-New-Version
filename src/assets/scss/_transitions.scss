@@ -28,3 +28,19 @@
     opacity: 0;
     transform: scale(0.3) translateY(-50%);
 }
+
+.description-leave-active,
+.description-enter-active {
+    transition: all 350ms ease;
+    overflow: hidden;
+}
+
+.description-enter-to,
+.description-leave-from {
+    height: 120px;
+}
+
+.description-enter-from,
+.description-leave-to {
+    height: 0;
+}
