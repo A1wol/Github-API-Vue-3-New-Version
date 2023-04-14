@@ -1,6 +1,7 @@
 export type TContributorList = TContributor[]
 
 export type TContributor = {
+    id: number,
     avatar_url: string,
     login: string,
     type: string,

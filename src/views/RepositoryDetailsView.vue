@@ -5,5 +5,5 @@
 </template>
 
 <script setup lang="ts">
-import RepositoryDetails from '@/components/modules/repository/RepositoryDetails.vue'
+import RepositoryDetails from '@/components/modules/repository/repositoryDetails.vue'
 </script>

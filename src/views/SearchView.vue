@@ -5,5 +5,5 @@
 </template>
 
 <script lang="ts" setup>
-import RepositoryList from '@/components/modules/search/RepositoryList.vue'
+import RepositoryList from '@/components/modules/search/repositoryList.vue'
 </script>

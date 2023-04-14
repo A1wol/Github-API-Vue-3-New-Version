@@ -25,7 +25,7 @@ import { getGithubRepositoriesResponse } from '@/helpers/requests'
 
 const isDataTableVisible = ref<boolean>(false)
 const repositoryListLength = ref<number>(0)
-const repositoryItems = ref([])
+const repositoryItems = ref()
 const githubStore = useGithubDataStore()
 const searchingPanelItems = ref()
 const isTableDataLoading = ref<boolean>(true)

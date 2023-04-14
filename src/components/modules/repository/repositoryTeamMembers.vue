@@ -22,9 +22,10 @@
 </template>
 <script setup lang="ts">
 import { getRepositoryContributorsResponse } from '@/helpers/requests';
+import { TContributorList } from '@/helpers/types';
 import { onMounted, ref } from 'vue';
 
-const repositoryContributors = ref()
+const repositoryContributors = ref<TContributorList>()
 const props = defineProps(['currentRepository'])
 const emit = defineEmits(['errorEmit'])
 

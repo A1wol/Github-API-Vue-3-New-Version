@@ -67,6 +67,7 @@ import { TContributor } from '@/helpers/types'
 
 const route = useRoute()
 const currentUser = ref<TContributor>({
+    id: 1,
     avatar_url: '',
     login: '',
     type: '',

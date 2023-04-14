@@ -3,7 +3,7 @@
         <BackButton />
         <div v-if="currentRepository !== undefined" class="repository-details">
             <div class="repository-details__commit-list-title">
-                Repository Commitss
+                Repository Commits
             </div>
             <RepositoryCommitList :current-repository="currentRepository" @errorEmit="isModalVisible = true" />
             <div class="repository-details__team-members-title">
