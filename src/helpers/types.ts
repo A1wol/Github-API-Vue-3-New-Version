@@ -1,16 +1,23 @@
-export type TContributorList = TContributor[]
-
 export type TContributor = {
-    id: number,
-    avatar_url: string,
-    login: string,
-    type: string,
+    id?: number,
+    avatar_url?: string,
+    login?: string,
+    type?: string,
+    name?: string,
+    followers?: number,
+    location?: string,
+    created_at?: Date,
+    updated_at?: Date,
+    bio?: string;
+    [key: string]: any;
+}
+
+export type TSearchingPanelItems = {
     name: string,
-    followers: number,
-    location: string,
-    created_at: string,
-    updated_at: string,
-    bio: string
+    page: number,
+    perPage: number,
+    order: string,
+    sort: string
 }
 
 export type TPerPageOption = {

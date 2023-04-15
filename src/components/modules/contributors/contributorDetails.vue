@@ -1,7 +1,7 @@
 <template>
     <div>
         <BackButton />
-        <div class="contributor-details">
+        <div class="contributor-details" v-if="currentUser">
             <div class="contributor-details__avatar">
                 <img :src="currentUser.avatar_url" />
                 <div class="contributor-details__avatar__login">{{ currentUser.login }}</div>
@@ -66,18 +66,8 @@ import { getCurrentUserResponse } from '@/helpers/requests'
 import { TContributor } from '@/helpers/types'
 
 const route = useRoute()
-const currentUser = ref<TContributor>({
-    id: 1,
-    avatar_url: '',
-    login: '',
-    type: '',
-    name: '',
-    followers: 0,
-    location: '',
-    created_at: '',
-    updated_at: '',
-    bio: ''
-})
+const currentUser = ref<TContributor>(
+)
 const isModalVisible = ref<boolean>(false)
 
 async function getCurrentUser() {

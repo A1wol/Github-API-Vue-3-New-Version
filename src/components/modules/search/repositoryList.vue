@@ -33,29 +33,32 @@ const isModalVisible = ref<boolean>(false)
 
 async function getGithubRepositories() {
     try {
-        repositoryItems.value = []
-        const paramsObj = {
-            q: searchingPanelItems.value.name,
-            page: searchingPanelItems.value.page,
-            per_page: searchingPanelItems.value.perPage,
-            order: searchingPanelItems.value.order,
-            sort: searchingPanelItems.value.sort
+        if (searchingPanelItems.value) {
+            repositoryItems.value = []
+            const paramsObj = {
+                q: searchingPanelItems.value.name,
+                page: searchingPanelItems.value.page,
+                per_page: searchingPanelItems.value.perPage,
+                order: searchingPanelItems.value.order,
+                sort: searchingPanelItems.value.sort
+            }
+            const searchParams = new URLSearchParams(paramsObj);
+            const response = await getGithubRepositoriesResponse(searchParams.toString())
+            repositoryListLength.value = response.data.total_count;
+            githubStore.setSearchingData(
+                searchingPanelItems.value.name,
+                searchingPanelItems.value.page,
+                searchingPanelItems.value.perPage,
+                searchingPanelItems.value.order,
+                searchingPanelItems.value.sort
+            )
+            isDataTableVisible.value = true
+            setTimeout(() => {
+                isTableDataLoading.value = false
+            }, 1000)
+            response.data.items.forEach((element: object) => repositoryItems.value.push({ ...element, visible: false }));
         }
-        const searchParams = new URLSearchParams(paramsObj);
-        const response = await getGithubRepositoriesResponse(searchParams.toString())
-        repositoryListLength.value = response.data.total_count;
-        githubStore.setSearchingData(
-            searchingPanelItems.value.name,
-            searchingPanelItems.value.page,
-            searchingPanelItems.value.perPage,
-            searchingPanelItems.value.order,
-            searchingPanelItems.value.sort
-        )
-        isDataTableVisible.value = true
-        setTimeout(() => {
-            isTableDataLoading.value = false
-        }, 1000)
-        response.data.items.forEach((element: object) => repositoryItems.value.push({ ...element, visible: false }));
+
     } catch (error) {
         console.error(error)
         isModalVisible.value = true

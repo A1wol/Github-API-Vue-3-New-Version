@@ -1,8 +1,8 @@
 import Axios from 'axios'
-import { TContributorList, TRepositoryCommitList } from './types'
+import { TContributor, TRepositoryCommitList } from './types'
 
 export async function getCurrentUserResponse(userID: string) {
-    return await Axios.get<TContributorList>(`https://api.github.com/user/${userID}`)
+    return await Axios.get<TContributor[]>(`https://api.github.com/user/${userID}`)
 }
 
 export async function getRepositoryCommitsResponse(repositoryName: string) {
@@ -10,7 +10,7 @@ export async function getRepositoryCommitsResponse(repositoryName: string) {
 }
 
 export async function getRepositoryContributorsResponse(repositoryName: string) {
-    return await Axios.get<TContributorList>(`https://api.github.com/repos/${repositoryName}/contributors`)
+    return await Axios.get<TContributor[]>(`https://api.github.com/repos/${repositoryName}/contributors`)
 }
 
 export async function getCurrentRepositoryDetailsResponse(repositoryID: string) {

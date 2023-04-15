@@ -57,6 +57,7 @@ import { useGithubDataStore } from '@/store/githubData'
 import PanelSelect from '@/components/ui/PanelSelect.vue';
 import { validateFormFields } from '@/helpers/helper';
 import { TPerPageOption } from '@/helpers/types';
+import { RepositoryItem } from '@/helpers/classes';
 
 const searchedRepositoryName = ref<string>('')
 const selectedPerPageOption = ref<number>(0)
@@ -80,7 +81,7 @@ const form = ref()
 const props = defineProps({
     repositoryListLength: Number,
     isDataTableLoading: Boolean,
-    repositoryItems: Array
+    repositoryItems: Array<RepositoryItem>
 })
 
 function checkForm(e: Event) {

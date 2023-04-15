@@ -23,14 +23,17 @@
                 </div>
             </div>
             <Transition name="description">
-                <div v-if="item.visible" class="data-table__rows__description">
-                    <div v-if="item.description !== null">
+                <div v-if="item.visible">
+                    <div v-if="item.description !== null" class="data-table__rows__description">
                         <div class="data-table__rows__description__title">Description</div>
-                        <div>{{ item.description }}</div>
+                        <div class="data-table__rows__description__content">{{ item.description }}</div>
                     </div>
-                    <div v-else class="data-table__rows__description__title">
-                        Item description is empty
+                    <div v-else class="data-table__rows__description">
+                        <div class="data-table__rows__description__title">
+                            Item description is empty
+                        </div>
                     </div>
+
                 </div>
             </Transition>
         </div>
@@ -82,20 +85,27 @@ defineProps({ repositoryItems: Array<RepositoryItem>, isTableDataLoading: Boolea
         }
 
         &__description {
-            div {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                padding: 12px;
-                background-color: #1f1f1f;
-            }
+            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 12px;
+            background-color: #838383;
 
             &__title {
                 display: flex;
                 justify-content: center;
+                align-items: center;
                 font-size: 30px;
                 font-weight: bold;
+            }
+
+            &__content {
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
         }
     }
