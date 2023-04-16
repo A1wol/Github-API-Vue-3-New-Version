@@ -27,10 +27,10 @@ import SvgIcon from '@jamescoyle/vue-icon'
 import RepositoryCommitList from './repositoryCommitList.vue';
 import RepositoryTeamMembers from './repositoryTeamMembers.vue'
 import { getCurrentRepositoryDetailsResponse } from '@/helpers/requests';
-import { Repository } from '@/helpers/classes';
+import { TRepository } from '@/helpers/types';
 
 const route = useRoute()
-const currentRepository = ref<Repository>()
+const currentRepository = ref<TRepository>()
 
 const emit = defineEmits(['openModal'])
 

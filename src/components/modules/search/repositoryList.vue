@@ -19,11 +19,11 @@ import RepositorySearchingPanel from './repositorySearchingPanel.vue'
 import RepositoryDataTable from './repositoryDataTable.vue'
 import { getGithubRepositoriesResponse } from '@/helpers/requests'
 import { GithubData } from '@/helpers/interfaces'
-import { Repository } from '@/helpers/classes'
+import { TRepository } from '@/helpers/types'
 
 const isDataTableVisible = ref<boolean>(false)
 const repositoryListLength = ref<number>(0)
-const dataTableRepositories = ref<Repository[]>()
+const dataTableRepositories = ref<TRepository[]>()
 const githubStore = useGithubDataStore()
 const searchingPanelItems = ref<GithubData>()
 const isTableDataLoading = ref<boolean>(true)
@@ -56,7 +56,7 @@ async function getGithubRepositories() {
                 isTableDataLoading.value = false
             }, 1000)
             if (dataTableRepositories.value !== undefined) {
-                response.data.items.forEach((element: Repository) => dataTableRepositories.value?.push({ ...element, visible: false }));
+                response.data.items.forEach((element: TRepository) => dataTableRepositories.value?.push({ ...element, visible: false }));
             }
         }
     } catch (error) {

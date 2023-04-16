@@ -41,3 +41,16 @@ export type TRepositoryCommit = {
         }
     },
 }
+
+export type TRepository = {
+    [x: string]: any;
+    id: number;
+    name: String;
+    created_at: Date;
+    visible: Boolean;
+    description: String;
+    owner: {
+        login: String;
+    };
+    total_count: number
+}

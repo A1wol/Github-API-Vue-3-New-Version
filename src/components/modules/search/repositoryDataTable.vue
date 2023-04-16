@@ -45,9 +45,9 @@
 import { mdiArrowRight, mdiArrowUp } from '@mdi/js'
 import SvgIcon from '@jamescoyle/vue-icon'
 import Spinner from '@/components/partials/Spinner.vue'
-import { Repository } from '@/helpers/classes';
+import { TRepository } from '@/helpers/types';
 
-defineProps({ repositoryItems: Array<Repository>, isTableDataLoading: Boolean })
+defineProps({ repositoryItems: Array<TRepository>, isTableDataLoading: Boolean })
 
 </script>
 
