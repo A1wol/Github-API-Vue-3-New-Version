@@ -4,11 +4,12 @@
             Vue 3 Github Repository & User Search
         </div>
         <RepositorySearchingPanel :repositoryListLength="repositoryListLength" :isDataTableLoading="isTableDataLoading"
-            :repositoryItems="repositoryItems" @passPanelData="searchingPanelItems = $event, getGithubRepositories()" />
+            :repositoryItems="dataTableRepositories"
+            @passPanelData="searchingPanelItems = $event, getGithubRepositories()" />
         <Transition>
             <div v-if="isDataTableVisible">
                 <div class="searching__result-counter">Results: {{ repositoryListLength }}</div>
-                <RepositoryDataTable :repositoryItems="repositoryItems" :isTableDataLoading="isTableDataLoading" />
+                <RepositoryDataTable :repositoryItems="dataTableRepositories" :isTableDataLoading="isTableDataLoading" />
             </div>
         </Transition>
         <Modal :showModal="isModalVisible" :modalText="'Repository List error'" @closeModal="isModalVisible = false" />
@@ -22,20 +23,22 @@ import RepositorySearchingPanel from './repositorySearchingPanel.vue'
 import RepositoryDataTable from './repositoryDataTable.vue'
 import Modal from '@/components/partials/Modal.vue'
 import { getGithubRepositoriesResponse } from '@/helpers/requests'
+import { GithubData } from '@/helpers/interfaces'
+import { Repository } from '@/helpers/classes'
 
 const isDataTableVisible = ref<boolean>(false)
 const repositoryListLength = ref<number>(0)
-const repositoryItems = ref()
+const dataTableRepositories = ref<Repository[]>()
 const githubStore = useGithubDataStore()
-const searchingPanelItems = ref()
+const searchingPanelItems = ref<GithubData>()
 const isTableDataLoading = ref<boolean>(true)
 const isModalVisible = ref<boolean>(false)
 
 async function getGithubRepositories() {
     try {
         if (searchingPanelItems.value) {
-            repositoryItems.value = []
-            const paramsObj = {
+            dataTableRepositories.value = []
+            const paramsObj: Record<string, any> = {
                 q: searchingPanelItems.value.name,
                 page: searchingPanelItems.value.page,
                 per_page: searchingPanelItems.value.perPage,
@@ -56,9 +59,10 @@ async function getGithubRepositories() {
             setTimeout(() => {
                 isTableDataLoading.value = false
             }, 1000)
-            response.data.items.forEach((element: object) => repositoryItems.value.push({ ...element, visible: false }));
+            if (dataTableRepositories.value !== undefined) {
+                response.data.items.forEach((element: Repository) => dataTableRepositories.value?.push({ ...element, visible: false }));
+            }
         }
-
     } catch (error) {
         console.error(error)
         isModalVisible.value = true

@@ -37,7 +37,7 @@
                         </div>
                     </div>
                 </div>
-                <div>
+                <div v-if="currentUser.created_at && currentUser.updated_at">
                     <div class="contributor-details__info__data">Created at: {{ new
                         Date(currentUser.created_at).toLocaleString() }}
                     </div>
@@ -66,8 +66,7 @@ import { getCurrentUserResponse } from '@/helpers/requests'
 import { TContributor } from '@/helpers/types'
 
 const route = useRoute()
-const currentUser = ref<TContributor>(
-)
+const currentUser = ref<Partial<TContributor>>()
 const isModalVisible = ref<boolean>(false)
 
 async function getCurrentUser() {

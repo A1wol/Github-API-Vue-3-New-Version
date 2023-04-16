@@ -1,7 +1,7 @@
 export interface GithubData {
-    name: String,
-    page: Number,
-    perPage: Number,
-    order: String,
-    sort: String
+    name: string,
+    page: number,
+    perPage: number,
+    order: string,
+    sort: string
 }

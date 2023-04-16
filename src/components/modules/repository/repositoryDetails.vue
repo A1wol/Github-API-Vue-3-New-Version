@@ -17,7 +17,6 @@
         </div>
         <Modal :showModal="isModalVisible" :modalText="'Repository Details list error'"
             @closeModal="isModalVisible = false" />
-
     </div>
 </template>
 
@@ -31,9 +30,10 @@ import RepositoryCommitList from './repositoryCommitList.vue';
 import RepositoryTeamMembers from './repositoryTeamMembers.vue'
 import Modal from '@/components/partials/Modal.vue'
 import { getCurrentRepositoryDetailsResponse } from '@/helpers/requests';
+import { Repository } from '@/helpers/classes';
 
 const route = useRoute()
-const currentRepository = ref()
+const currentRepository = ref<Repository>()
 const isModalVisible = ref<boolean>(false)
 
 async function getCurrentRepositoryDetails() {

@@ -1,14 +1,14 @@
 export type TContributor = {
-    id?: number,
-    avatar_url?: string,
-    login?: string,
-    type?: string,
-    name?: string,
-    followers?: number,
-    location?: string,
-    created_at?: Date,
-    updated_at?: Date,
-    bio?: string;
+    id: number,
+    avatar_url: string,
+    login: string,
+    type: string,
+    name: string,
+    followers: number,
+    location: string,
+    created_at: Date,
+    updated_at: Date,
+    bio: string;
     [key: string]: any;
 }
 
