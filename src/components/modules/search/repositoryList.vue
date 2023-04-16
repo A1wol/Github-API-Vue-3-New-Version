@@ -34,10 +34,10 @@ async function getGithubRepositories() {
     try {
         if (searchingPanelItems.value) {
             dataTableRepositories.value = []
-            const paramsObj: Record<string, any> = {
+            const paramsObj: Record<string, string> = {
                 q: searchingPanelItems.value.name,
-                page: searchingPanelItems.value.page,
-                per_page: searchingPanelItems.value.perPage,
+                page: searchingPanelItems.value.page.toString(),
+                per_page: searchingPanelItems.value.perPage.toString(),
                 order: searchingPanelItems.value.order,
                 sort: searchingPanelItems.value.sort
             }

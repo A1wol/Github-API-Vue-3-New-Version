@@ -129,11 +129,6 @@ defineProps({ repositoryItems: Array<Repository>, isTableDataLoading: Boolean })
             flex-direction: column;
         }
 
-        &__arrow {
-            display: flex;
-            justify-content: flex-end !important
-        }
-
         &__rows {
             display: flex;
             justify-content: center;
