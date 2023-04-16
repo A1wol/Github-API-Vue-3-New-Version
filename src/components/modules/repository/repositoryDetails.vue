@@ -58,6 +58,11 @@ onMounted(() => {
 
     &__commit-list-title {
         margin-top: 20px;
+        color: black;
+    }
+
+    &__team-members-title {
+        color: black;
     }
 
     &__info {

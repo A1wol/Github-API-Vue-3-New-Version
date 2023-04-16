@@ -33,7 +33,6 @@
                             Item description is empty
                         </div>
                     </div>
-
                 </div>
             </Transition>
         </div>

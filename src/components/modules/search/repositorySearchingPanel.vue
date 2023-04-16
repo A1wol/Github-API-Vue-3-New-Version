@@ -1,24 +1,27 @@
 <template>
     <div class="panel">
         <form id="app" ref="form" @submit="checkForm">
-            <div class="panel__text-field">
-                <input v-model="searchedRepositoryName" placeholder="Repository name" />
-                <div class="panel__text-field__button">
-                    <button @click="submitForm()">SEARCH
-                        <SvgIcon type="mdi" :path="mdiMagnify"></SvgIcon>
-                    </button>
+            <label>
+                <div>Repository name</div>
+                <div class="panel__text-field">
+                    <input v-model="searchedRepositoryName" placeholder="Repository name" />
+                    <div class="panel__text-field__button">
+                        <button @click="submitForm()">SEARCH
+                            <SvgIcon type="mdi" :path="mdiMagnify"></SvgIcon>
+                        </button>
+                    </div>
+                    <div class="panel__errors" v-show="formErrors.length">
+                        {{ formErrors[0] }}
+                    </div>
                 </div>
-                <div class="panel__errors" v-show="formErrors.length">
-                    {{ formErrors[0] }}
-                </div>
-            </div>
+            </label>
             <div class="panel__selects">
                 <div>
                     <label
                         v-if="props.repositoryListLength !== undefined && props.repositoryListLength > selectedPerPageOption"
                         class="panel__label--page">
-                        Page
-                        <div class="panel__label__buttons">
+                        <div class="panel__label--page__title">Page</div>
+                        <div class="panel__label--page__buttons">
                             <div :style="{ backgroundColor: selectedPageOption > 1 ? '' : 'rgb(64,64,64)' }"
                                 @click="decrementPageValue()">
                                 <SvgIcon type="mdi" :path="mdiArrowLeft"></SvgIcon>
@@ -159,7 +162,6 @@ onMounted(() => {
 
     &__label {
         font-size: 14px;
-        color: white;
         padding-right: 15px;
         padding-left: 15px;
         display: flex;
@@ -170,10 +172,7 @@ onMounted(() => {
         }
 
         &--page {
-            font-size: 14px;
-            color: white;
             flex-direction: column;
-            color: white;
             height: 100px;
             display: flex;
             justify-content: center;
@@ -184,22 +183,28 @@ onMounted(() => {
             margin-top: 5px;
             margin-right: 15px;
 
-            div {
+            &__buttons {
                 width: 100%;
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
                 background-color: #1f1f1f;
                 height: 45px;
-                border: 1px solid white;
+                color: white;
+                font-size: 18px;
                 cursor: pointer;
+
+                div {
+                    border: 1px solid white;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                }
             }
         }
     }
 
     &__text-field {
         display: flex;
-        margin-top: 20px;
 
         input {
             width: 30%;

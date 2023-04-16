@@ -1,8 +1,5 @@
 <template>
     <div class="searching">
-        <div class="searching__title">
-            Vue 3 Github Repository & User Search
-        </div>
         <RepositorySearchingPanel :repositoryListLength="repositoryListLength" :isDataTableLoading="isTableDataLoading"
             :repositoryItems="dataTableRepositories"
             @passPanelData="searchingPanelItems = $event, getGithubRepositories()" />
@@ -71,16 +68,8 @@ async function getGithubRepositories() {
 
 <style scoped lang="scss">
 .searching {
-    &__title {
-        display: flex;
-        justify-content: center;
-        font-size: 24px;
-        color: white;
-    }
-
     &__result-counter {
         font-size: 16px;
-        color: white;
     }
 }
 </style>
