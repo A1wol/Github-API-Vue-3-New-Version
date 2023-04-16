@@ -12,7 +12,6 @@
                 <RepositoryDataTable :repositoryItems="dataTableRepositories" :isTableDataLoading="isTableDataLoading" />
             </div>
         </Transition>
-        <Modal :showModal="isModalVisible" :modalText="'Repository List error'" @closeModal="isModalVisible = false" />
     </div>
 </template>
 
@@ -21,7 +20,6 @@ import { ref } from 'vue'
 import { useGithubDataStore } from '@/store/githubData'
 import RepositorySearchingPanel from './repositorySearchingPanel.vue'
 import RepositoryDataTable from './repositoryDataTable.vue'
-import Modal from '@/components/partials/Modal.vue'
 import { getGithubRepositoriesResponse } from '@/helpers/requests'
 import { GithubData } from '@/helpers/interfaces'
 import { Repository } from '@/helpers/classes'
@@ -32,7 +30,8 @@ const dataTableRepositories = ref<Repository[]>()
 const githubStore = useGithubDataStore()
 const searchingPanelItems = ref<GithubData>()
 const isTableDataLoading = ref<boolean>(true)
-const isModalVisible = ref<boolean>(false)
+
+const emit = defineEmits(['openModal'])
 
 async function getGithubRepositories() {
     try {
@@ -65,7 +64,7 @@ async function getGithubRepositories() {
         }
     } catch (error) {
         console.error(error)
-        isModalVisible.value = true
+        emit('openModal')
     }
 }
 </script>

@@ -50,8 +50,6 @@
                 </div>
             </div>
         </div>
-        <Modal :showModal="isModalVisible" :modalText="'Contributor Detail list error'"
-            @closeModal="isModalVisible = false" />
     </div>
 </template>
 
@@ -61,13 +59,12 @@ import { ref, onMounted } from 'vue'
 import { mdiAccount, mdiMapMarker, mdiAccountGroup, mdiTextBox } from '@mdi/js'
 import SvgIcon from '@jamescoyle/vue-icon'
 import { useRoute } from 'vue-router'
-import Modal from '@/components/partials/Modal.vue'
 import { getCurrentUserResponse } from '@/helpers/requests'
 import { TContributor } from '@/helpers/types'
 
 const route = useRoute()
 const currentUser = ref<Partial<TContributor>>()
-const isModalVisible = ref<boolean>(false)
+const emit = defineEmits(['openModal'])
 
 async function getCurrentUser() {
     try {
@@ -75,7 +72,7 @@ async function getCurrentUser() {
         currentUser.value = response.data
     } catch (error) {
         console.error(error)
-        isModalVisible.value = true
+        emit('openModal')
     }
 }
 onMounted(() => {

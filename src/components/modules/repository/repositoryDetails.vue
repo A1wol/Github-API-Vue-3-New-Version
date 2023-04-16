@@ -5,18 +5,16 @@
             <div class="repository-details__commit-list-title">
                 Repository Commits
             </div>
-            <RepositoryCommitList :current-repository="currentRepository" @errorEmit="isModalVisible = true" />
+            <RepositoryCommitList :current-repository="currentRepository" @errorEmit="emit('openModal')" />
             <div class="repository-details__team-members-title">
                 Repository Contributors
             </div>
-            <RepositoryTeamMembers :current-repository="currentRepository" @errorEmit="isModalVisible = true" />
+            <RepositoryTeamMembers :current-repository="currentRepository" @errorEmit="emit('openModal')" />
         </div>
         <div v-else class="repository-details__info">
             Repository is empty
             <SvgIcon type="mdi" :path="mdiEmoticonSadOutline"></SvgIcon>
         </div>
-        <Modal :showModal="isModalVisible" :modalText="'Repository Details list error'"
-            @closeModal="isModalVisible = false" />
     </div>
 </template>
 
@@ -28,13 +26,13 @@ import { useRoute } from 'vue-router';
 import SvgIcon from '@jamescoyle/vue-icon'
 import RepositoryCommitList from './repositoryCommitList.vue';
 import RepositoryTeamMembers from './repositoryTeamMembers.vue'
-import Modal from '@/components/partials/Modal.vue'
 import { getCurrentRepositoryDetailsResponse } from '@/helpers/requests';
 import { Repository } from '@/helpers/classes';
 
 const route = useRoute()
 const currentRepository = ref<Repository>()
-const isModalVisible = ref<boolean>(false)
+
+const emit = defineEmits(['openModal'])
 
 async function getCurrentRepositoryDetails() {
     try {
@@ -42,7 +40,7 @@ async function getCurrentRepositoryDetails() {
         currentRepository.value = response.data
     } catch (error) {
         console.error(error)
-        isModalVisible.value = true
+        emit('openModal')
     }
 }
 onMounted(() => {
