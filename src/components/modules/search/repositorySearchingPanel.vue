@@ -32,7 +32,7 @@
                             </div>
                         </div>
                     </label>
-                    <label class="panel__label">
+                    <label class="panel__label--per-page">
                         <PanelSelect :title="'Per Page'" v-model="selectedPerPageOption" :options="perPageOptions"
                             @onSearchRequest="submitForm()" />
                     </label>
@@ -146,7 +146,7 @@ onMounted(() => {
         justify-content: center;
         align-items: center;
         height: 90px;
-        margin-top: 28px;
+        margin-top: 38px;
 
         div {
             display: flex;
@@ -233,18 +233,24 @@ onMounted(() => {
 
         &__label {
             width: 40%;
-            height: 70px;
+            height: 40px;
             margin-bottom: 35px;
 
             &--page {
                 width: 40%;
-                margin-left: 10px;
+            }
+
+            &--per-page {
+                width: 40%;
+                margin-top: 20px;
             }
         }
 
         &__selects {
             display: flex;
             flex-direction: column;
+            text-align: center;
+            margin-bottom: 55px;
 
             div {
                 display: flex;

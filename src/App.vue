@@ -129,6 +129,10 @@ import {
         display: none;
       }
     }
+
+    &__router {
+      padding-top: 87px;
+    }
   }
 }
 

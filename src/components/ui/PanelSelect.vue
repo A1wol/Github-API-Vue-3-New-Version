@@ -51,4 +51,11 @@ defineEmits(['update:modelValue', 'onSearchRequest'])
         border: 1px solid white;
     }
 }
+
+@media (max-width:600px) {
+    .select {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+}
 </style>
