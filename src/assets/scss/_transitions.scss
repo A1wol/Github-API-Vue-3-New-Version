@@ -37,10 +37,10 @@
 
 .description-enter-to,
 .description-leave-from {
-    height: 125px;
+    max-height: 250px;
 }
 
 .description-enter-from,
 .description-leave-to {
-    height: 0;
+    max-height: 0;
 }

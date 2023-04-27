@@ -22,7 +22,7 @@
                         class="panel__label--page">
                         <div class="panel__label--page__title">Page</div>
                         <div class="panel__label--page__buttons">
-                            <div :style="{ backgroundColor: selectedPageOption > 1 ? '' : 'rgb(64,64,64)' }"
+                            <div :class="[selectedPageOption > 1 ? '' : 'panel__label--page__buttons__firstPage']"
                                 @click="decrementPageValue()">
                                 <SvgIcon type="mdi" :path="mdiArrowLeft"></SvgIcon>
                             </div>
@@ -180,24 +180,30 @@ onMounted(() => {
             width: 150px;
             display: flex;
             align-items: flex-start;
-            margin-top: 5px;
+            margin-top: 4px;
             margin-right: 15px;
 
             &__buttons {
                 width: 100%;
-                background-color: #1f1f1f;
-                height: 45px;
+                height: 46px;
                 color: white;
                 font-size: 18px;
                 cursor: pointer;
+                border-radius: 15px;
+                border: 1px solid rgb(241, 241, 241);
+                background-color: #1f1f1f;
 
                 div {
-                    border: 1px solid rgb(50, 50, 50);
                     width: 100%;
                     height: 100%;
                     display: flex;
                     justify-content: space-around;
                     align-items: center;
+                }
+
+                &__firstPage {
+                    background-color: rgb(69, 69, 69);
+                    border-radius: 15px 0 0 15px;
                 }
             }
         }

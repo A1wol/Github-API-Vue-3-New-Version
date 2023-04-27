@@ -36,7 +36,7 @@
                 </div>
             </Transition>
         </div>
-        <div v-else>
+        <div v-else class="data-table__spinner">
             <Spinner />
         </div>
     </div>
@@ -55,11 +55,13 @@ defineProps({ repositoryItems: Array<TRepository>, isTableDataLoading: Boolean }
 .data-table {
     color: white;
     justify-content: center;
+    border-radius: 15px;
+    background-color: #212121;
+    border: 1px solid black;
 
     div {
         display: flex;
         width: 100%;
-        background-color: #1a1a1a;
         font-size: 20px;
     }
 
@@ -71,6 +73,7 @@ defineProps({ repositoryItems: Array<TRepository>, isTableDataLoading: Boolean }
 
         &__content {
             border: 1px solid #535353;
+            background-color: #171717;
 
             div {
                 display: flex;
@@ -79,6 +82,7 @@ defineProps({ repositoryItems: Array<TRepository>, isTableDataLoading: Boolean }
                 word-break: break-all;
                 max-width: 200px;
                 min-height: 60px;
+                padding: 8px;
             }
 
         }
@@ -91,7 +95,10 @@ defineProps({ repositoryItems: Array<TRepository>, isTableDataLoading: Boolean }
             justify-content: center;
             text-align: center;
             padding: 12px;
-            background-color: #838383;
+            background-color: rgb(36, 36, 36);
+            -webkit-box-shadow: inset 8px 8px 24px -23px rgba(255, 255, 255, 1);
+            -moz-box-shadow: inset 8px 8px 24px -23px rgba(255, 255, 255, 1);
+            box-shadow: inset 8px 8px 24px -23px rgba(255, 255, 255, 1);
 
             &__title {
                 display: flex;
@@ -112,6 +119,8 @@ defineProps({ repositoryItems: Array<TRepository>, isTableDataLoading: Boolean }
     &__headers {
         height: 50px;
         font-weight: bold;
+        background-color: black;
+        border-radius: 15px 15px 0 0;
 
         div {
             display: flex;
@@ -119,14 +128,21 @@ defineProps({ repositoryItems: Array<TRepository>, isTableDataLoading: Boolean }
             align-items: center;
         }
     }
+
+    &__spinner {
+        background-color: #171717;
+        border-radius: 15px;
+    }
 }
 
 @media (max-width: 600px) {
     .data-table {
-        margin-top: 20px;
+        background-color: transparent;
+        border: none;
 
         div {
             flex-direction: column;
+            width: -moz-available;
         }
 
         &__rows {
@@ -137,6 +153,8 @@ defineProps({ repositoryItems: Array<TRepository>, isTableDataLoading: Boolean }
             margin-bottom: 15px;
 
             &__content {
+                border-radius: 15px 15px 0 0;
+
                 div {
                     display: flex;
                     justify-content: space-between;
@@ -153,6 +171,8 @@ defineProps({ repositoryItems: Array<TRepository>, isTableDataLoading: Boolean }
             }
 
             &__description {
+                border-radius: 0 0 15px 15px;
+
                 div {
                     padding: 0;
                     padding-top: 10px;

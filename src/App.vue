@@ -6,28 +6,52 @@
         <div class="app__nav-bar__logo__description">Fast & Good</div>
       </div>
       <div class="app__nav-bar__options">
-        <div>Documentation</div>
-        <div>Integrations</div>
-        <div>Features</div>
-        <div>Pricing</div>
-        <div>Use cases</div>
-        <div>Team</div>
-        <div>FAQ</div>
-        <div>Contact us</div>
+        <div>
+          <SvgIcon type="mdi" :path="mdiFileDocumentOutline"></SvgIcon>
+          <div>Documentation</div>
+        </div>
+        <div>
+          <SvgIcon type="mdi" :path="mdiAccountGroupOutline"></SvgIcon>
+          <div>Integrations</div>
+        </div>
+        <div>
+          <SvgIcon type="mdi" :path="mdiStarCircleOutline"></SvgIcon>
+          <div>Features</div>
+        </div>
+        <div>
+          <SvgIcon type="mdi" :path="mdiCash"></SvgIcon>
+          <div>Pricing</div>
+        </div>
+        <div>
+          <SvgIcon type="mdi" :path="mdiGraphOutline"></SvgIcon>
+          <div>Use cases</div>
+        </div>
+        <div>
+          <SvgIcon type="mdi" :path="mdiAccountMultipleOutline"></SvgIcon>
+          <div>Team</div>
+        </div>
+        <div>
+          <SvgIcon type="mdi" :path="mdiFrequentlyAskedQuestions"></SvgIcon>
+          <div>FAQ</div>
+        </div>
+        <div>
+          <SvgIcon type="mdi" :path="mdiPhoneInTalkOutline"></SvgIcon>
+          <div>Contact us</div>
+        </div>
       </div>
       <div class="app__nav-bar__account">
-        <div class="app__nav-bar__account__login">
-          <button>Login</button>
-        </div>
-        <div class="app__nav-bar__account__logout">
-          <button>Register</button>
-        </div>
+        <button class="app__nav-bar__account__login">Login</button>
+        <button class="app__nav-bar__account__register">Register</button>
       </div>
     </div>
     <div class="app__router"><router-view /></div>
   </div>
 </template>
 <script setup lang="ts">
+import SvgIcon from '@jamescoyle/vue-icon'
+import {
+  mdiFileDocumentOutline, mdiAccountGroupOutline, mdiStarCircleOutline, mdiCash, mdiGraphOutline, mdiAccountMultipleOutline, mdiFrequentlyAskedQuestions, mdiPhoneInTalkOutline
+} from '@mdi/js'
 </script>
 
 <style scoped lang="scss">
@@ -42,10 +66,12 @@
     z-index: 99;
     width: 100%;
     background-color: white;
-    border-bottom: 1px solid grey;
     border-radius: 0 0 15px 15px;
     justify-content: space-evenly;
     align-items: center;
+    -webkit-box-shadow: 8px -2px 24px -8px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 8px -2px 24px -8px rgba(66, 68, 90, 1);
+    box-shadow: 8px -2px 24px -8px rgba(66, 68, 90, 1);
 
     &__logo {
       &__title {
@@ -66,15 +92,24 @@
       display: flex;
       width: 650px;
       justify-content: space-around;
+      text-align: center;
       cursor: pointer;
     }
 
     &__account {
       display: flex;
+      width: 250px;
+      justify-content: space-between;
 
-      div {
-        padding: 12px;
+      &__login {
+        color: white;
+        background-color: #171717;
+
+        &:hover {
+          background-color: #323232;
+        }
       }
+
     }
   }
 
@@ -111,9 +146,7 @@
       }
 
       &__account {
-        div {
-          padding: 5px;
-        }
+        width: 170px;
 
         button {
           width: 80px;
