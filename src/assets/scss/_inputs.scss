@@ -3,7 +3,7 @@ input {
     padding: 12px;
     font-size: 16px;
     height: 26px;
-    border-radius: 6px;
+    border-radius: $base-radius;
     background-color: #1a1a1a;
     color: white;
 }

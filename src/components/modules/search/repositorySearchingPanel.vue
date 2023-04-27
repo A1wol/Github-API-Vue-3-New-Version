@@ -145,6 +145,8 @@ onMounted(() => {
         display: flex;
         justify-content: center;
         align-items: center;
+        height: 90px;
+        margin-top: 28px;
 
         div {
             display: flex;
@@ -189,7 +191,7 @@ onMounted(() => {
                 color: white;
                 font-size: 18px;
                 cursor: pointer;
-                border-radius: 15px;
+                border-radius: $base-radius;
                 border: 1px solid rgb(241, 241, 241);
                 background-color: #1f1f1f;
 
@@ -203,7 +205,7 @@ onMounted(() => {
 
                 &__firstPage {
                     background-color: rgb(69, 69, 69);
-                    border-radius: 15px 0 0 15px;
+                    border-radius: $base-radius 0 0 $base-radius;
                 }
             }
         }

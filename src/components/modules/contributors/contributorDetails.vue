@@ -89,7 +89,7 @@ onMounted(() => {
     background-image: radial-gradient(circle farthest-corner at 29.4% 48%, rgba(77, 77, 77, 1) 0%, rgba(0, 0, 0, 1) 90%);
     padding-top: 50px;
     padding-bottom: 50px;
-    border-radius: 20px;
+    border-radius: $base-radius;
     color: white;
     font-size: 20px;
 
@@ -113,7 +113,7 @@ onMounted(() => {
         img {
             width: 100%;
             max-width: 350px;
-            border-radius: 10px;
+            border-radius: $base-radius;
         }
 
         &__login {

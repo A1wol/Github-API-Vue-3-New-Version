@@ -32,6 +32,7 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         additionalData: `
+        @import "@/assets/scss/variable";
         @import "@/assets/scss/buttons";
         @import "@/assets/scss/inputs";
         @import "@/assets/scss/transitions";`

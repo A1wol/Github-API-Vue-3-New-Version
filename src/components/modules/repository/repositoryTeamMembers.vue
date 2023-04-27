@@ -46,7 +46,7 @@ onMounted(() => {
 <style scoped lang="scss">
 .team-members {
     max-height: 400px;
-    border-radius: 10px;
+    border-radius: $base-radius;
     overflow-y: auto;
     background-color: #1a1a1a;
     border: 1px solid #535353;

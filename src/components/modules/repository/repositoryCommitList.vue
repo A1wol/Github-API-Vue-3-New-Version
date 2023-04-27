@@ -51,7 +51,7 @@ onMounted(() => {
 .commit-list {
     max-height: 400px;
     overflow-y: auto;
-    border-radius: 10px;
+    border-radius: $base-radius;
     background-color: #1a1a1a;
     border: 1px solid #535353;
     margin-bottom: 50px;

@@ -66,7 +66,7 @@ import {
     z-index: 99;
     width: 100%;
     background-color: white;
-    border-radius: 0 0 15px 15px;
+    border-radius: 0 0 $base-radius $base-radius;
     justify-content: space-evenly;
     align-items: center;
     -webkit-box-shadow: 8px -2px 24px -8px rgba(66, 68, 90, 1);
@@ -114,7 +114,7 @@ import {
   }
 
   &__router {
-    padding-top: 100px;
+    padding-top: 97px;
     max-width: 1000px;
     display: block;
     margin-left: auto;

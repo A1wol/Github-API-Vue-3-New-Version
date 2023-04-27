@@ -45,7 +45,7 @@ defineEmits(['update:modelValue', 'onSearchRequest'])
         padding: 12px;
         height: 50px;
         border: 0px solid #1a1a1a;
-        border-radius: 6px;
+        border-radius: $base-radius;
         background: #1a1a1a;
         color: #ffffff;
         border: 1px solid white;

@@ -33,7 +33,7 @@ const emit = defineEmits(['closeModal'])
     height: fit-content;
     padding: 20px;
     width: 30%;
-    border-radius: 1rem;
+    border-radius: $base-radius;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
     background: #FFF;
     z-index: 999;

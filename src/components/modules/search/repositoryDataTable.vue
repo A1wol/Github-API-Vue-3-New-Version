@@ -55,7 +55,7 @@ defineProps({ repositoryItems: Array<TRepository>, isTableDataLoading: Boolean }
 .data-table {
     color: white;
     justify-content: center;
-    border-radius: 15px;
+    border-radius: $base-radius;
     background-color: #212121;
     border: 1px solid black;
 
@@ -120,7 +120,7 @@ defineProps({ repositoryItems: Array<TRepository>, isTableDataLoading: Boolean }
         height: 50px;
         font-weight: bold;
         background-color: black;
-        border-radius: 15px 15px 0 0;
+        border-radius: $base-radius $base-radius 0 0;
 
         div {
             display: flex;
@@ -131,7 +131,7 @@ defineProps({ repositoryItems: Array<TRepository>, isTableDataLoading: Boolean }
 
     &__spinner {
         background-color: #171717;
-        border-radius: 15px;
+        border-radius: $base-radius;
     }
 }
 
@@ -153,7 +153,7 @@ defineProps({ repositoryItems: Array<TRepository>, isTableDataLoading: Boolean }
             margin-bottom: 15px;
 
             &__content {
-                border-radius: 15px 15px 0 0;
+                border-radius: $base-radius $base-radius 0 0;
 
                 div {
                     display: flex;
@@ -171,7 +171,7 @@ defineProps({ repositoryItems: Array<TRepository>, isTableDataLoading: Boolean }
             }
 
             &__description {
-                border-radius: 0 0 15px 15px;
+                border-radius: 0 0 $base-radius $base-radius;
 
                 div {
                     padding: 0;
