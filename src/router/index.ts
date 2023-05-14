@@ -3,16 +3,16 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
   {
-    path: '/',
+    path: '/Github-API-Vue-3-New-Version/',
     component: () => import('@/views/SearchView.vue'),
   },
   {
-    path: '/repository-details/:id',
+    path: '/Github-API-Vue-3-New-Version/repository-details/:id',
     name: 'Repository-Details',
     component: () => import('@/views/RepositoryDetailsView.vue'),
   },
   {
-    path: '/contributor-details/:id',
+    path: '/Github-API-Vue-3-New-Version/contributor-details/:id',
     name: 'Contributor-Details',
     component: () => import('@/views/ContributorDetailsView.vue'),
   },

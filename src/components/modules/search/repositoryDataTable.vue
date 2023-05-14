@@ -14,7 +14,7 @@
                 <div data-label="Owner">{{ item.owner.login }}</div>
                 <div data-label="Created">{{ new Date(item.created_at).toLocaleDateString() }}</div>
                 <div data-label="Navigation">
-                    <button @click="$router.push(`repository-details/${item.id}`)">Details
+                    <button @click="$router.push(`/Github-API-Vue-3-New-Version/repository-details/${item.id}`)">Details
                         <SvgIcon type="mdi" :path="mdiArrowRight"></SvgIcon>
                     </button>
                 </div>

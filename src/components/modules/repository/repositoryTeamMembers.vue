@@ -2,7 +2,7 @@
     <div class="team-members">
         <div v-if="repositoryContributors">
             <li v-for="contributor in repositoryContributors" :key="contributor.id">
-                <div @click="$router.push(`/contributor-details/${contributor.id}`)">
+                <div @click="$router.push(`/Github-API-Vue-3-New-Version/contributor-details/${contributor.id}`)">
                     <div class="team-members__member">
                         <div>
                             <img class="team-members__avatar" :src="contributor.avatar_url" />
