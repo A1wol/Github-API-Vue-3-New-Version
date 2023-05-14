@@ -1,1 +1,0 @@
-import{a as n,o as a,c as r,h as s,u as t,k as c,S as p,e as u}from"./index.079f31e4.js";const i=u("div",null,"BACK",-1),d=n({__name:"backButton",setup(l){return(o,e)=>(a(),r("button",{onClick:e[0]||(e[0]=m=>o.$router.go(-1))},[s(t(p),{type:"mdi",path:t(c)},null,8,["path"]),i]))}});export{d as _};
