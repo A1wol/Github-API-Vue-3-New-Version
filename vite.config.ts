@@ -7,6 +7,7 @@ import { fileURLToPath, URL } from 'node:url'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: "/Github-API-Vue-3-New-Version/",
   plugins: [
     vue()
   ],

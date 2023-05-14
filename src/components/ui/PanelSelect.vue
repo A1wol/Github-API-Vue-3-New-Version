@@ -2,7 +2,7 @@
     <div class="select">
         {{ title }}
         <select class="select__input" :value="modelValue"
-            @change="$emit('update:modelValue', $event.target.value), $emit('onSearchRequest')">
+            @change="$emit('update:modelValue', ($event.target as HTMLInputElement).value), $emit('onSearchRequest')">
             <option disabled>{{ title }}</option>
             <option v-for="option in options" :value="option.value">
                 {{ option.text }}
