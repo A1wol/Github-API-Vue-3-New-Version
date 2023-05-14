@@ -143,6 +143,8 @@ defineProps({ repositoryItems: Array<TRepository>, isTableDataLoading: Boolean }
         div {
             flex-direction: column;
             width: -moz-available;
+            width: -webkit-fill-available;
+            width: stretch;
         }
 
         &__rows {
